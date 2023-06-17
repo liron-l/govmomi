@@ -52,7 +52,10 @@ type Executor struct {
 }
 
 func NewExecutor(c *vim25.Client, host *object.HostSystem) (*Executor, error) {
-	ctx := context.TODO()
+	return NewExecutorWithCtx(c, host, context.TODO())
+}
+
+func NewExecutorWithCtx(c *vim25.Client, host *object.HostSystem, ctx context.Context) (*Executor, error) {
 	e := &Executor{
 		c:    c,
 		host: host,
